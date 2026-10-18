@@ -1,0 +1,61 @@
+info:
+  name: Список услуг
+  type: http
+  seq: 1
+  tags:
+    - Services
+
+http:
+  method: GET
+  url: "{{baseUrl}}/services"
+  params:
+    - name: master_id
+      value: ""
+      type: query
+      description: ID мастера (для публичного доступа)
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: OK
+    request:
+      url: "{{baseUrl}}/services"
+      method: GET
+      params:
+        - name: master_id
+          value: ""
+          type: query
+          description: ID мастера (для публичного доступа)
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          [
+            {
+              "created_at": "",
+              "currency_id": "",
+              "currency_iso_code": "",
+              "description": "",
+              "duration_minutes": 0,
+              "id": "",
+              "master_id": "",
+              "price": 0,
+              "sort_order": 0,
+              "title": "",
+              "version": 0,
+              "visibility": false
+            }
+          ]

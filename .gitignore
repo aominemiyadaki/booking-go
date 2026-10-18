@@ -1,0 +1,36 @@
+# Environment
+.env
+.env.prod
+.env.local
+
+# Binary
+/api
+*.exe
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go
+vendor/
+
+# Swagger (auto-generated)
+docs/docs.go
+docs/swagger.json
+docs/swagger.yaml
+
+# Local database data
+/postgres_data/
+
+build/
+.dart_tool/
+node_modules/

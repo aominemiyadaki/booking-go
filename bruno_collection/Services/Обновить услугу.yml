@@ -1,0 +1,78 @@
+info:
+  name: Обновить услугу
+  type: http
+  seq: 4
+  tags:
+    - Services
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/services/:id"
+  headers:
+    - name: Authorization
+      value: "{{apiKey}}"
+  params:
+    - name: id
+      value: ""
+      type: path
+      description: ID услуги
+  body:
+    type: json
+    data: |-
+      {
+        "currency_id": "",
+        "description": "",
+        "duration_minutes": 0,
+        "price": 0,
+        "sort_order": 0,
+        "title": ""
+      }
+  auth:
+    type: apikey
+    key: Authorization
+    value: "{{apiKey}}"
+    placement: header
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: OK
+    request:
+      url: "{{baseUrl}}/services/:id"
+      method: PUT
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: ID услуги
+      body:
+        type: json
+        data: |-
+          {
+            "currency_id": "",
+            "description": "",
+            "duration_minutes": 0,
+            "price": 0,
+            "sort_order": 0,
+            "title": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "message": ""
+          }

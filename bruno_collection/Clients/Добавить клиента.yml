@@ -1,0 +1,75 @@
+info:
+  name: Добавить клиента
+  type: http
+  seq: 2
+  tags:
+    - Clients
+
+http:
+  method: POST
+  url: "{{baseUrl}}/clients"
+  headers:
+    - name: Authorization
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "",
+        "notes": "",
+        "phone_number": ""
+      }
+  auth:
+    type: apikey
+    key: Authorization
+    value: "{{apiKey}}"
+    placement: header
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Created
+    request:
+      url: "{{baseUrl}}/clients"
+      method: POST
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+            "name": "",
+            "notes": "",
+            "phone_number": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "birth_date": "",
+            "created_at": "",
+            "id": "",
+            "is_blocked": false,
+            "last_visited": "",
+            "master_id": "",
+            "name": "",
+            "notes": "",
+            "phone_number": "",
+            "telegram_id": 0,
+            "telegram_username": "",
+            "total_visits": 0,
+            "version": 0,
+            "visibility": false
+          }

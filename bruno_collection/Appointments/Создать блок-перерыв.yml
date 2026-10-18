@@ -1,0 +1,86 @@
+info:
+  name: Создать блок/перерыв
+  type: http
+  seq: 7
+  tags:
+    - Appointments
+
+http:
+  method: POST
+  url: "{{baseUrl}}/appointments/block"
+  headers:
+    - name: Authorization
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: "{}"
+  auth:
+    type: apikey
+    key: Authorization
+    value: "{{apiKey}}"
+    placement: header
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Created
+    request:
+      url: "{{baseUrl}}/appointments/block"
+      method: POST
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: "{}"
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "client_id": "",
+            "comment": "",
+            "created_at": "",
+            "end_time": "",
+            "id": "",
+            "master_id": "",
+            "service_id": "",
+            "start_time": "",
+            "status_id": "",
+            "version": 0,
+            "visibility": false
+          }
+  - name: 409 Response
+    description: Conflict
+    request:
+      url: "{{baseUrl}}/appointments/block"
+      method: POST
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: "{}"
+    response:
+      status: 409
+      statusText: Conflict
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "error": "",
+            "message": ""
+          }

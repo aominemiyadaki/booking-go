@@ -1,0 +1,62 @@
+info:
+  name: Добавить специализацию
+  type: http
+  seq: 2
+  tags:
+    - Specializations
+
+http:
+  method: POST
+  url: "{{baseUrl}}/specializations"
+  headers:
+    - name: Authorization
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": ""
+      }
+  auth:
+    type: apikey
+    key: Authorization
+    value: "{{apiKey}}"
+    placement: header
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Created
+    request:
+      url: "{{baseUrl}}/specializations"
+      method: POST
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "created_at": "",
+            "id": "",
+            "name": "",
+            "version": 0,
+            "visibility": false
+          }

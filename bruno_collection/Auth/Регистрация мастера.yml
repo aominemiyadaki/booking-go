@@ -1,0 +1,121 @@
+info:
+  name: Регистрация мастера
+  type: http
+  seq: 5
+  tags:
+    - Auth
+
+http:
+  method: POST
+  url: "{{baseUrl}}/master/register"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "",
+        "full_name": "",
+        "password": "",
+        "phone_number": "",
+        "specialization_id": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Created
+    request:
+      url: "{{baseUrl}}/master/register"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "email": "",
+            "full_name": "",
+            "password": "",
+            "phone_number": "",
+            "specialization_id": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "master": {
+              "avatar_url": "",
+              "full_name": "",
+              "id": "",
+              "phone_number": "",
+              "specialization": ""
+            },
+            "token": ""
+          }
+  - name: 400 Response
+    description: Bad Request
+    request:
+      url: "{{baseUrl}}/master/register"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "email": "",
+            "full_name": "",
+            "password": "",
+            "phone_number": "",
+            "specialization_id": ""
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "error": "",
+            "message": ""
+          }
+  - name: 409 Response
+    description: Email уже занят
+    request:
+      url: "{{baseUrl}}/master/register"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "email": "",
+            "full_name": "",
+            "password": "",
+            "phone_number": "",
+            "specialization_id": ""
+          }
+    response:
+      status: 409
+      statusText: Conflict
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "error": "",
+            "message": ""
+          }
+
+docs: Создаёт нового мастера и возвращает JWT токен

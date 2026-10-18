@@ -1,0 +1,79 @@
+info:
+  name: Добавить услугу
+  type: http
+  seq: 2
+  tags:
+    - Services
+
+http:
+  method: POST
+  url: "{{baseUrl}}/services"
+  headers:
+    - name: Authorization
+      value: "{{apiKey}}"
+  body:
+    type: json
+    data: |-
+      {
+        "currency_id": "",
+        "description": "",
+        "duration_minutes": 0,
+        "price": 0,
+        "sort_order": 0,
+        "title": ""
+      }
+  auth:
+    type: apikey
+    key: Authorization
+    value: "{{apiKey}}"
+    placement: header
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Created
+    request:
+      url: "{{baseUrl}}/services"
+      method: POST
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+      body:
+        type: json
+        data: |-
+          {
+            "currency_id": "",
+            "description": "",
+            "duration_minutes": 0,
+            "price": 0,
+            "sort_order": 0,
+            "title": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "created_at": "",
+            "currency_id": "",
+            "currency_iso_code": "",
+            "description": "",
+            "duration_minutes": 0,
+            "id": "",
+            "master_id": "",
+            "price": 0,
+            "sort_order": 0,
+            "title": "",
+            "version": 0,
+            "visibility": false
+          }

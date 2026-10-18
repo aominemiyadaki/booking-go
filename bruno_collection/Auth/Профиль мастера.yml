@@ -1,0 +1,94 @@
+info:
+  name: Профиль мастера
+  type: http
+  seq: 3
+  tags:
+    - Auth
+
+http:
+  method: GET
+  url: "{{baseUrl}}/master/profile"
+  headers:
+    - name: Authorization
+      value: "{{apiKey}}"
+  auth:
+    type: apikey
+    key: Authorization
+    value: "{{apiKey}}"
+    placement: header
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: OK
+    request:
+      url: "{{baseUrl}}/master/profile"
+      method: GET
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "avatar_url": "",
+            "full_name": "",
+            "id": "",
+            "phone_number": "",
+            "specialization": ""
+          }
+  - name: 401 Response
+    description: Unauthorized
+    request:
+      url: "{{baseUrl}}/master/profile"
+      method: GET
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "error": "",
+            "message": ""
+          }
+  - name: 404 Response
+    description: Not Found
+    request:
+      url: "{{baseUrl}}/master/profile"
+      method: GET
+      headers:
+        - name: Authorization
+          value: "{{apiKey}}"
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "error": "",
+            "message": ""
+          }
+
+docs: Возвращает профиль текущего авторизованного мастера
