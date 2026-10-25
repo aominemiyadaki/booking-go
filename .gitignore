@@ -34,3 +34,5 @@ docs/swagger.yaml
 build/
 .dart_tool/
 node_modules/
+bin/
+tmp_build

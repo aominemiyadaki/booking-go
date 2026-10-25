@@ -1,6 +1,6 @@
 name: Environment
 variables:
   - name: baseUrl
-    value: https://bubukabooking.duckdns.org/api
+    value: http://localhost:8080/api
   - name: apiKey
-    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODUyNzAyNDQsImlhdCI6MTc4NTE4Mzg0NCwibWFzdGVyX2lkIjoiZDQyNTA1ZTgtYTgwYS00ZTIxLTllM2MtYjY0YWYwZDEzM2JlIn0.uoH55wyXQxVfghjjurA_4l5506DK44Z_1callrbBQKA
+    value: Bearer <YOUR_JWT_TOKEN>
